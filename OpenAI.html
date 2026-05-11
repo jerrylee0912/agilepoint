@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgilePoint NX10 - OpenAI 使用教學 (更新版)</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 80%; margin: 0 auto; background: white; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 8px; }
+        .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-bottom: 20px; }
+        .ref-link { text-align: right; margin-bottom: 20px; font-size: 0.9em; }
+        .ref-link a { color: #3498db; text-decoration: none; font-weight: bold; }
+        .step-container { display: flex; align-items: flex-start; margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .image-box { flex: 0 0 480px; margin-right: 25px; cursor: zoom-in; }
+        .image-box img { width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; }
+        .description-box { flex: 1; min-width: 400px; }
+        .step-title { font-weight: bold; font-size: 1.2em; color: #2980b9; margin-bottom: 10px; }
+        .desc-text { line-height: 1.6; background: #fafafa; padding: 15px; border-left: 4px solid #3498db; }
+        #modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
+        #modal img { max-width: 90%; max-height: 90%; border: 5px solid white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="ref-link">
+        官方參考網址：<a href="https://blog.agilepoint.com/agilepoint-v10-now-supports-form-lookups-for-openai/" target="_blank">AgilePoint Blog - OpenAI Form Lookups</a>
+    </div>
+    <div class="header">
+        <h1>AgilePoint NX10 - OpenAI 整合操作教學</h1>
+    </div>
+    
+    <div id="content">
+
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/01_Global Access Token_01.png')">
+                <img src="OpenAI/01_Global Access Token_01.png" alt="01 Global Access Token 01">
+            </div>
+            <div class="description-box">
+                <div class="step-title">01 Global Access Token 01</div>
+                <div class="desc-text">
+                    進入 AgilePoint NX 管理介面，點選Add Token新增設定。
+                </div>
+            </div>
+        </div>
+    
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/01_Global Access Token_02.png')">
+                <img src="OpenAI/01_Global Access Token_02.png" alt="01 Global Access Token 02">
+            </div>
+            <div class="description-box">
+                <div class="step-title">01 Global Access Token 02</div>
+                <div class="desc-text">
+                    點擊新增 OpenAI。
+                </div>
+            </div>
+        </div>
+    
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/01_Global Access Token_03.png')">
+                <img src="OpenAI/01_Global Access Token_03.png" alt="01 Global Access Token 03">
+            </div>
+            <div class="description-box">
+                <div class="step-title">01 Global Access Token 03</div>
+                <div class="desc-text">
+                    輸入自定義名稱並填入從 OpenAI 官網取得的 API 金鑰(須付費)，完成全域存取設定。
+                </div>
+            </div>
+        </div>
+    
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_01.png')">
+                <img src="OpenAI/02_eForm_01.png" alt="02 eForm 01">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 01</div>
+                <div class="desc-text">
+                    在 eForm 表單設計器中，進行配置(如圖:AutoLoopUp*1、Text Area*2、Button*1)。
+                </div>
+            </div>
+        </div>
+    
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_02.png')">
+                <img src="OpenAI/02_eForm_02.png" alt="02 eForm 02">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 02</div>
+                <div class="desc-text">
+                    編輯AutoLoopUp，選擇/新增 LoopUp，並且設定Access Token(Open AI)。
+                </div>
+            </div>
+        </div>
+    
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_03.png')">
+                <img src="OpenAI/02_eForm_03.png" alt="02 eForm 03">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 03</div>
+                <div class="desc-text">
+                    配置 OpenAI 活動的輸入參數與模型屬性。<br><br>
+    <strong>Model Properties 頁籤：調整 AI 的「性格與精準度」</strong><br>
+    <table style="width:100%; border-collapse: collapse; font-size: 0.9em; margin-top: 10px;">
+        <tr style="background-color: #f2f2f2;">
+            <th style="border: 1px solid #ddd; padding: 8px;">名詞項目</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">定義與作用</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">參數範圍</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">範例案例</th>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Frequency Penalty</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">頻率懲罰。降低 AI 在一段話中重覆使用「相同字詞」的機率。</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">-2.0 到 2.0 (通常設 0)</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">設為 1.0：當 AI 回覆太過囉唆時，調高可增加詞彙多樣性。</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Presence Penalty</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">存在懲罰。鼓勵 AI 談論「全新話題」，增加內容的新鮮感。</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">-2.0 到 2.0 (通常設 0)</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">設為 1.0：用於腦力激盪，避免 AI 繞著同一個點打轉。</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Temperature</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">溫度。控制生成的創意程度。越低越嚴謹，越高越有創意。</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">0 到 2.0</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">0.1 (低)：合約分析、自動填表。1.0 (高)：行銷文案。</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Nucleus Sampling (top_p)</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">核採樣。控制輸出的多樣性，只從機率累計前 P% 的詞彙中挑選。</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">0 到 1.0</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">0.1：AI 只選最穩定的詞。建議與 Temperature 二選一調整。</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Max Output Token Length</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">最大輸出長度。限制 AI 回覆內容的總長度。</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">1 到 模型上限</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">設為 500：確保 AI 不會回傳過長廢話，節省成本。</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Stop Sequences</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">停止序列。當 AI 產出特定的字串時，就立即中斷輸出。</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">自定義字串</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">設定為 
+ 或 Done：偵測到換行或完成標記時就結束。</td>
+        </tr>
+    </table>
+                </div>
+            </div>
+        </div>
+    
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_04.png')">
+                <img src="OpenAI/02_eForm_04.png" alt="02 eForm 04">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 04</div>
+                <div class="desc-text">
+                    設定輸出對應，將 AI 產生的回應寫回至表單的指定欄位中。下圖表示紅色的一定要設定<br><br>
+    <table style="width:100%; border-collapse: collapse; font-size: 0.9em; margin-top: 10px;">
+        <tr style="background-color: #f2f2f2;">
+            <th style="border: 1px solid #ddd; padding: 8px;">名詞項目</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">定義與作用</th>
+            <th style="border: 1px solid #ddd; padding: 8px;">範例案例 (以「採購單審核助手」為例)</th>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;color:red">Goals/Mission</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">任務目標：明確告訴 AI 它的主要任務。</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">「你的任務是檢查採購單內容是否符合預算編列規範。」</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Skills</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">賦予 AI 專家背景或特定能力。</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">「你是一位具備 10 年經驗的財務審核員，精通企業會計準則。」</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Input</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">告訴 AI 它會接收到哪些格式的資料。</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">「你會收到來自 AgilePoint 表單的 JSON 資料，包含 Amount 與 Department。」</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;color:red;">Instruction</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">具體的 SOP 或決策邏輯。</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">「1. 確認金額是否超過 10 萬。 2. 若超過且部門為 IT，則標註為高風險。」</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Quality Verification</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">定義輸出的品質標準或禁忌。</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">「回覆語氣必須客觀。若資料不齊全，不可自行通融，須要求補件。」</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ddd; padding: 8px;">Output</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">規定 AI 最終產出的格式。</td>
+            <td style="border: 1px solid #ddd; padding: 8px;">「請僅回傳 JSON：{"status": "Pass/Fail", "comment": "原因"}。」</td>
+        </tr>
+    </table>
+                </div>
+            </div>
+        </div>
+    
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_05.png')">
+                <img src="OpenAI/02_eForm_05.png" alt="02 eForm 05">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 05</div>
+                <div class="desc-text">
+                    請設定Form裡面的請求欄位。
+                </div>
+            </div>
+        </div>
+    
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_06.png')">
+                <img src="OpenAI/02_eForm_06.png" alt="02 eForm 06">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 06</div>
+                <div class="desc-text">
+                    請選擇Map OpenAI Response To App Schema，並點右側的放大鏡。
+                </div>
+            </div>
+        </div>
+    
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_07.png')">
+                <img src="OpenAI/02_eForm_07.png" alt="02 eForm 07">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 07</div>
+                <div class="desc-text">
+                    設定content至你的輸出欄位。
+                </div>
+            </div>
+        </div>
+		
+		<div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/03_Result_01.png')">
+                <img src="OpenAI/03_Result_01.png" alt="03 預覽">
+            </div>
+            <div class="description-box">
+                <div class="step-title">03 預覽</div>
+                <div class="desc-text">
+                    預覽畫面，執行結果如圖。
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+
+<div id="modal" onclick="this.style.display='none'">
+    <img id="modal-img" src="" alt="放大圖">
+</div>
+
+<script>
+    function openModal(src) {
+        document.getElementById('modal-img').src = src;
+        document.getElementById('modal').style.display = 'flex';
+    }
+</script>
+
+</body>
+</html>
