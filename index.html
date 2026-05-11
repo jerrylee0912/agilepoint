@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgilePoint NX10 數位學習手冊總匯</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; margin: 0; padding: 40px; display: flex; justify-content: center; }
+        .portal-container { max-width: 900px; width: 100%; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 20px; margin-bottom: 30px; }
+        h1 { color: #2c3e50; margin: 0; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .menu-item { 
+            background: #ffffff; border: 1px solid #e1e4e8; border-radius: 8px; padding: 20px; 
+            text-decoration: none; color: #34495e; transition: all 0.3s ease; display: block; text-align: center;
+        }
+        .menu-item:hover { transform: translateY(-5px); border-color: #3498db; box-shadow: 0 5px 15px rgba(52,152,219,0.2); }
+        .menu-item .title { font-weight: bold; font-size: 1.2em; color: #2980b9; display: block; margin-bottom: 10px; }
+        .menu-item .desc { font-size: 0.9em; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+<div class="portal-container">
+    <div class="header">
+        <h1>AgilePoint NX10 系統操作手冊門戶</h1>
+        <p>請選擇下方主題進入詳細教學</p>
+    </div>
+    <div class="menu-grid" id="nav-menu">
+        <a href="OpenAI.html" class="menu-item">
+            <span class="title">OpenAI 整合基礎</span>
+            <span class="desc">了解如何在 AgilePoint 中設定基本 Token 與 Form Lookups</span>
+        </a>
+    </div>
+</div>
+</body>
+</html>
