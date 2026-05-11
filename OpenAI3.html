@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgilePoint NX10 - OpenAI3 整合操作教學</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 80%; margin: 0 auto; background: white; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 8px; }
+        .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-bottom: 20px; }
+        .ref-link { text-align: right; margin-bottom: 20px; font-size: 0.9em; }
+        .ref-link a { color: #3498db; text-decoration: none; font-weight: bold; }
+        .step-container { display: flex; align-items: flex-start; margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .image-box { flex: 0 0 480px; margin-right: 25px; cursor: zoom-in; }
+        .image-box img { width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; }
+        .description-box { flex: 1; min-width: 400px; }
+        .step-title { font-weight: bold; font-size: 1.2em; color: #2980b9; margin-bottom: 10px; }
+        .desc-text { line-height: 1.6; background: #fafafa; padding: 15px; border-left: 4px solid #3498db; }
+        #modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
+        #modal img { max-width: 90%; max-height: 90%; border: 5px solid white; }
+        .desc-text table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .desc-text th, .desc-text td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .desc-text th { background-color: #eef; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header"><h1>AgilePoint NX10 - OpenAI3 整合操作教學</h1></div>
+    <div id="content">
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('images/OpenAI3/01_Global Access Token_01.png')">
+                <img src="images/OpenAI3/01_Global Access Token_01.png" alt="01_Global Access Token_01">
+            </div>
+            <div class="description-box">
+                <div class="step-title">01_Global Access Token_01</div>
+                <div class="desc-text">
+                    <p>此畫面顯示 AgilePoint NX10 的管理介面，特別是「App Builder」下的「Global Access Tokens」區塊。它列出了現有的存取令牌，其中包含一個名為 "NX10JLOpenAITestToken" 且類型為 "OpenAI" 的令牌。這是管理與外部服務（如 OpenAI）API 存取的起點。</p>
+                    <p>此清單展示了一個已配置的 OpenAI 存取令牌範例：</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>TOKEN NAME</th>
+                                <th>TYPE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>NX10JLOpenAITestToken</td>
+                                <td>OpenAI</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('images/OpenAI3/01_Global Access Token_02.png')">
+                <img src="images/OpenAI3/01_Global Access Token_02.png" alt="01_Global Access Token_02">
+            </div>
+            <div class="description-box">
+                <div class="step-title">01_Global Access Token_02</div>
+                <div class="desc-text">
+                    <p>此畫面顯示「Add Access Token」對話框，使用者可以在此選擇要建立存取令牌的外部服務類型。圖中已選取 "OpenAI"，表示使用者正選擇 OpenAI 作為服務提供者。點擊「Next」按鈕可繼續。</p>
+                </div>
+            </div>
+        </div>
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('images/OpenAI3/01_Global Access Token_03.png')">
+                <img src="images/OpenAI3/01_Global Access Token_03.png" alt="01_Global Access Token_03">
+            </div>
+            <div class="description-box">
+                <div class="step-title">01_Global Access Token_03</div>
+                <div class="desc-text">
+                    <p>此畫面是 OpenAI 存取令牌的配置界面。使用者需要提供令牌名稱、描述和 OpenAI 帳戶的 API Key。頁面中包含一個「Test Connection」按鈕用於驗證 API Key，以及一個「Model」下拉選單用於選擇預設的 OpenAI 模型。</p>
+                    <p>請填寫以下必填欄位：</p>
+                    <ul>
+                        <li><strong>Token Name *</strong>: 存取令牌的名稱。</li>
+                        <li><strong>Description</strong>: 令牌的描述（選填）。</li>
+                        <li><strong>API Key *</strong>: 您的 OpenAI API Key。</li>
+                    </ul>
+                    <p>配置完成後，可以點擊「Test Connection」來測試連線是否成功，並在「Model」下拉選單中選擇預設模型。</p>
+                </div>
+            </div>
+        </div>
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('images/OpenAI3/02_eForm_01.png')">
+                <img src="images/OpenAI3/02_eForm_01.png" alt="02_eForm_01">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02_eForm_01</div>
+                <div class="desc-text">
+                    <p>此畫面展示了 AgilePoint eForm 的設計介面。表單包含兩個文字區域，分別標示為「LLM(OpenAI) 輸入」和「LLM(OpenAI) 輸出」，以及一個標示為「LLM(OpenAI) 送出」的按鈕。目前，「LLM(OpenAI) 輸入」欄位中預填了 "hi"。此表單旨在與已配置的 OpenAI 服務進行互動。</p>
+                </div>
+            </div>
+        </div>
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('images/OpenAI3/02_eForm_02.png')">
+                <img src="images/OpenAI3/02_eForm_02.png" alt="02_eForm_02">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02_eForm_02</div>
+                <div class="desc-text">
+                    <p>此畫面顯示「Lookup Details」區塊，很可能位於 eForm 配置內部，用於定義 OpenAI 查詢（lookup）。「Access Token」欄位已設定為「NX10JLOpenAITestToken (Global)」，這是前面步驟中建立的全局存取令牌。「Lookup Name」則設定為「LuOpenAI2」。此配置將 eForm 元件連結到全局 OpenAI 存取令牌。</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>欄位</th>
+                                <th>值</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Access Token</td>
+                                <td>NX10JLOpenAITestToken (Global)</td>
+                            </tr>
+                            <tr>
+                                <td>Lookup Name</td>
+                                <td>LuOpenAI2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('images/OpenAI3/02_eForm_03.png')">
+                <img src="images/OpenAI3/02_eForm_03.png" alt="02_eForm_03">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02_eForm_03</div>
+                <div class="desc-text">
+                    <p>此畫面展示「Configure Lookup」中的「Model Properties」設定。圖中顯示選定的模型為 "gpt-5.4"。同時，「Use model configured in access token」核取方塊已被勾選，表示將使用全局存取令牌中配置的模型。其他參數如「Frequency Penalty」、「Presence Penalty」、「Temperature」和「Nucleus Sampling (top_p)」等也在此處進行配置。</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>參數</th>
+                                <th>值</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Model</td>
+                                <td>gpt-5.4</td>
+                            </tr>
+                            <tr>
+                                <td>Use model configured in access token</td>
+                                <td>Checked</td>
+                            </tr>
+                            <tr>
+                                <td>Frequency Penalty</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>Presence Penalty</td>
+                                <td>0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Temperature</td>
+                                <td>0.10</td>
+                            </tr>
+                            <tr>
+                                <td>Nucleus Sampling (top_p)</td>
+                                <td>1.00</td>
+                            </tr>
+                            <tr>
+                                <td>Maximum Output Token Length</td>
+                                <td>(未設定)</td>
+                            </tr>
+                            <tr>
+                                <td>Stop Sequences</td>
+                                <td>(未設定)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('images/OpenAI3/02_eForm_04.png')">
+                <img src="images/OpenAI3/02_eForm_04.png" alt="02_eForm_04">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02_eForm_04</div>
+                <div class="desc-text">
+                    <p>此畫面顯示「Configure Lookup」介面中的「System Instruction」標籤頁。此部分允許為 OpenAI 模型定義系統級指令，以引導其行為和角色設定。它包含「System Instruction」下拉選單和「Instruction Name」欄位，以及「Goals/Mission」、「Skills」、「Input」、「Instruction」、「Quality Verification」和「Output」等子標籤頁，用於更詳細的配置。</p>
+                </div>
+            </div>
+        </div>
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('images/OpenAI3/02_eForm_05.png')">
+                <img src="images/OpenAI3/02_eForm_05.png" alt="02_eForm_05">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02_eForm_05</div>
+                <div class="desc-text">
+                    <p>此畫面顯示「Configure Lookup」區塊中的「Request」標籤頁。圖中選取了「Message Content」，且 OpenAI 模型的輸入內容被動態映射為 <code>$(taOpenAIInput)</code>。這表示 eForm 中「LLM(OpenAI) 輸入」欄位的內容將作為請求發送給 OpenAI。右側的「FIELDS」面板顯示了可用的表單欄位，其中包含 <code>taOpenAIInput</code> 和 <code>taOpenAIOutput</code>。</p>
+                    <ul>
+                        <li><strong>Message Content</strong>: <code>$(taOpenAIInput)</code> (將 eForm 輸入欄位的值傳遞給 OpenAI)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('images/OpenAI3/02_eForm_06.png')">
+                <img src="images/OpenAI3/02_eForm_06.png" alt="02_eForm_06">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02_eForm_06</div>
+                <div class="desc-text">
+                    <p>此畫面顯示「Configure Lookup」區塊中的「Response」標籤頁。圖中選取了「Map OpenAI Response To App Schema」，表示 OpenAI 模型的回應將會被映射回 AgilePoint 應用程式的結構。下方還有選項可以將回應儲存為變數，可選擇儲存為 JSON 或字串格式。</p>
+                    <ul>
+                        <li><strong>Map OpenAI Response To App Schema</strong>: 已選取</li>
+                        <li><strong>Store The Response In This Variable</strong>: (將回應儲存到指定變數)</li>
+                        <li><strong>Store Response JSON In This Variable</strong>: (將 JSON 格式的回應儲存到指定變數)</li>
+                        <li><strong>Store Response Content In This Variable (String)</strong>: (將字串格式的回應內容儲存到指定變數)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('images/OpenAI3/02_eForm_07.png')">
+                <img src="images/OpenAI3/02_eForm_07.png" alt="02_eForm_07">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02_eForm_07</div>
+                <div class="desc-text">
+                    <p>此畫面展示了將 OpenAI 回應視覺化映射到 eForm 欄位的過程。具體來說，OpenAI 回應中 <code>message</code> 物件的 <code>content</code> 字段被映射到 <code>formFields</code> 中的 <code>taOpenAIOutput</code> 欄位。這確保了 OpenAI 生成的文本將顯示在 eForm 的「LLM(OpenAI) 輸出」文字區域中。</p>
+                    <p>映射關係：</p>
+                    <ul>
+                        <li>OpenAI Response: <code>message.content</code></li>
+                        <li>eForm Field: <code>taOpenAIOutput</code></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('images/OpenAI3/03_Result_01.png')">
+                <img src="images/OpenAI3/03_Result_01.png" alt="03_Result_01">
+            </div>
+            <div class="description-box">
+                <div class="step-title">03_Result_01</div>
+                <div class="desc-text">
+                    <p>此畫面顯示了與 eForm 互動後的最終結果。使用者在「LLM(OpenAI) 輸入」欄位中輸入了「請自我介紹」。點擊提交按鈕後，「LLM(OpenAI) 輸出」欄位顯示了 AI 的回應：「你好, 我是 ChatGPT, 一個由 OpenAI 訓練的 AI 助手。我可以幫你回答問題、整理資訊、寫作、翻譯、提供點子，也能陪你討論各種主題。」這確認了與 OpenAI 成功整合並進行了互動。</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>欄位</th>
+                                <th>內容</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>LLM(OpenAI) 輸入</td>
+                                <td>請自我介紹</td>
+                            </tr>
+                            <tr>
+                                <td>LLM(OpenAI) 輸出</td>
+                                <td>你好, 我是 ChatGPT, 一個由 OpenAI 訓練的 AI 助手。我可以幫你回答問題、整理資訊、寫作、翻譯、提供點子，也能陪你討論各種主題。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
+<div id="modal" onclick="this.style.display='none'"><img id="modal-img" src="" alt="放大圖"></div>
+<script>
+    function openModal(src) { document.getElementById('modal-img').src = src; document.getElementById('modal').style.display = 'flex'; }
+</script>
+</body>
+</html>
