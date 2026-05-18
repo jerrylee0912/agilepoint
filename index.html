@@ -3,38 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgilePoint NX10 數位學習手冊總匯</title>
+    <title>AgilePoint NX10 系統操作手冊總匯門戶</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; margin: 0; padding: 40px; display: flex; justify-content: center; }
-        .portal-container { max-width: 900px; width: 100%; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 20px; margin-bottom: 30px; }
-        h1 { color: #2c3e50; margin: 0; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-        .menu-item { 
-            background: #ffffff; border: 1px solid #e1e4e8; border-radius: 8px; padding: 20px; 
-            text-decoration: none; color: #34495e; transition: all 0.3s ease; display: block; text-align: center;
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f4f7f6; 
+            color: #333; 
+            margin: 0; 
+            padding: 40px 20px; 
         }
-        .menu-item:hover { transform: translateY(-5px); border-color: #3498db; box-shadow: 0 5px 15px rgba(52,152,219,0.2); }
-        .menu-item .title { font-weight: bold; font-size: 1.2em; color: #2980b9; display: block; margin-bottom: 10px; }
-        .menu-item .desc { font-size: 0.9em; color: #7f8c8d; }
+        .container { 
+            max-width: 80%; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 40px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            border-radius: 8px; 
+        }
+        .header { 
+            text-align: center; 
+            border-bottom: 2px solid #3498db; 
+            padding-bottom: 20px; 
+            margin-bottom: 30px; 
+        }
+        .header h1 { 
+            margin: 0 0 10px 0; 
+            color: #2c3e50; 
+            font-size: 2.2em;
+        }
+        .intro { 
+            font-size: 1.1em; 
+            color: #555; 
+            line-height: 1.6;
+        }
+        .section-title { 
+            color: #2980b9; 
+            font-size: 1.5em; 
+            border-left: 5px solid #3498db; 
+            padding-left: 12px; 
+            margin-top: 40px; 
+            margin-bottom: 20px; 
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .manual-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .manual-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-color: #3498db;
+        }
+        .card-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        .card-title a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        .card-title a:hover {
+            text-decoration: underline;
+        }
+        .card-desc {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .unit-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+            border-top: 1px dashed #e2e8f0;
+            padding-top: 12px;
+        }
+        .unit-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+            font-size: 0.9em;
+            color: #4a5568;
+        }
+        .unit-list li::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .file-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+        .file-table th, .file-table td {
+            border: 1px solid #e2e8f0;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .file-table th {
+            background-color: #f8fafc;
+            color: #334155;
+            font-weight: 600;
+        }
+        .file-table tr:hover {
+            background-color: #f8fafc;
+        }
+        code {
+            background-color: #f1f5f9;
+            color: #e21d48;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
-<div class="portal-container">
+
+<div class="container">
     <div class="header">
-        <h1>AgilePoint NX10 系統操作手冊門戶</h1>
-        <p>請選擇下方主題進入詳細教學</p>
+        <h1>🛠️ AgilePoint NX10 系統操作手冊總匯門戶</h1>
+        <p class="intro">歡迎使用 AgilePoint NX10 數位學習手冊總匯門戶。請點擊下方連結進入對應的詳細整合操作手冊：</p>
     </div>
-    <div class="menu-grid" id="nav-menu">
-        <a href="OpenAI3.html" class="menu-item">
-            <span class="title">OpenAI3 操作教學</span>
-            <span class="desc">自動生成的 OpenAI3 系統手冊</span>
-        </a>
-        <a href="OpenAI.html" class="menu-item">
-            <span class="title">OpenAI 整合基礎</span>
-            <span class="desc">了解如何在 AgilePoint 中設定基本 Token 與 Form Lookups</span>
-        </a>
+
+    <div class="section-title">📂 手冊目錄索引</div>
+    
+    <div class="card-container">
+        <!-- OpenAI Card -->
+        <div class="manual-card">
+            <div class="card-title">1. 🤖 <a href="OpenAI.html">OpenAI 整合操作教學</a></div>
+            <div class="card-desc"><strong>說明</strong>：了解如何在 AgilePoint 中配置 OpenAI 全域存取權杖（Global Access Token）、eForm 表單中的 AutoLookup 欄位，以及設定 AI 模型的相關屬性與 Prompt 核心參數。</div>
+            <ul class="unit-list">
+                <li>全域存取權杖（Global Access Token）設定</li>
+                <li>eForm 表單配置與 AutoLookup 編輯</li>
+                <li>Model Properties 參數與 Prompt 核心要素</li>
+            </ul>
+        </div>
+
+        <!-- Gemini AI Card -->
+        <div class="manual-card">
+            <div class="card-title">2. 🌟 <a href="GeminiAI.html">Gemini AI 整合操作教學</a></div>
+            <div class="card-desc"><strong>說明</strong>：了解如何在 AgilePoint 中整合 Google Gemini AI 模型，配置其對應的欄位、系統提示詞（System Prompt）以及對應的 App Schema 輸出結果。</div>
+            <ul class="unit-list">
+                <li>Gemini AI 服務元件配置</li>
+                <li>輸入請求與輸出響應欄位對應（Map OpenAI/Gemini Response）</li>
+                <li>表單端點即時預覽與成效測試</li>
+            </ul>
+        </div>
     </div>
+
 </div>
+
 </body>
 </html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgilePoint NX10 - OpenAI 使用教學 (更新版)</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 80%; margin: 0 auto; background: white; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-radius: 8px; }
+        .header { text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-bottom: 20px; }
+        .ref-link { text-align: right; margin-bottom: 20px; font-size: 0.9em; }
+        .ref-link a { color: #3498db; text-decoration: none; font-weight: bold; }
+        .step-container { display: flex; align-items: flex-start; margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .image-box { flex: 0 0 480px; margin-right: 25px; cursor: zoom-in; }
+        .image-box img { width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px; }
+        .description-box { flex: 1; min-width: 400px; }
+        .step-title { font-weight: bold; font-size: 1.2em; color: #2980b9; margin-bottom: 10px; }
+        .desc-text { line-height: 1.6; background: #fafafa; padding: 15px; border-left: 4px solid #3498db; }
+        
+        /* 內嵌表格樣式 */
+        .spec-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff; font-size: 0.9em; }
+        .spec-table th, .spec-table td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+        .spec-table th { background-color: #eef2f5; color: #34495e; font-weight: bold; }
+        .highlight-red { color: #e74c3c; font-weight: bold; }
+        
+        /* 燈箱效果樣式 */
+        #modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; cursor: zoom-out; }
+        #modal img { max-width: 90%; max-height: 90%; border: 5px solid white; border-radius: 4px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="ref-link">
+        官方參考網址：<a href="https://blog.agilepoint.com/agilepoint-v10-now-supports-form-lookups-for-openai/" target="_blank">AgilePoint Blog - OpenAI Form Lookups</a>
+    </div>
+    <div class="header">
+        <h1>AgilePoint NX10 - OpenAI 整合操作教學</h1>
+    </div>
+    
+    <div id="content">
+
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/01_Global Access Token_01.png')">
+                <img src="OpenAI/01_Global Access Token_01.png" alt="01 Global Access Token 01">
+            </div>
+            <div class="description-box">
+                <div class="step-title">01 Global Access Token 01</div>
+                <div class="desc-text">進入 AgilePoint NX 管理介面，點選Add Token新增設定。123</div>
+            </div>
+        </div>
+    
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/01_Global Access Token_02.png')">
+                <img src="OpenAI/01_Global Access Token_02.png" alt="01 Global Access Token 02">
+            </div>
+            <div class="description-box">
+                <div class="step-title">01 Global Access Token 02</div>
+                <div class="desc-text">點擊新增 OpenAI。</div>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/01_Global Access Token_03.png')">
+                <img src="OpenAI/01_Global Access Token_03.png" alt="01 Global Access Token 03">
+            </div>
+            <div class="description-box">
+                <div class="step-title">01 Global Access Token 03</div>
+                <div class="desc-text">輸入自定義名稱並填入從 OpenAI 官網取得的 API 金鑰(須付費)，完成全域存取設定。</div>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_01.png')">
+                <img src="OpenAI/02_eForm_01.png" alt="02 eForm 01">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 01</div>
+                <div class="desc-text">在 eForm 表單設計器中，進行配置(如圖:AutoLoopUp*1、Text Area*2、Button*1)。</div>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_02.png')">
+                <img src="OpenAI/02_eForm_02.png" alt="02 eForm 02">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 02</div>
+                <div class="desc-text">編輯AutoLoopUp，選擇/新增 LoopUp，並且設定Access Token(Open AI)。</div>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_03.png')">
+                <img src="OpenAI/02_eForm_03.png" alt="02 eForm 03">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 03</div>
+                <div class="desc-text">
+                    配置 OpenAI 活動的輸入參數與模型屬性。<br><br>
+                    <strong>Model Properties 頁籤：調整 AI 的「性格與精準度」</strong>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>模型參數 (Parameter)</th>
+                                <th>建議設定值</th>
+                                <th>說明 (Description)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Model</strong></td>
+                                <td>gpt-4o / gpt-3.5-turbo</td>
+                                <td>選擇欲呼叫的 OpenAI 模型版本。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Temperature</strong></td>
+                                <td>0.7</td>
+                                <td>控制回應的隨機性。數值愈低愈嚴謹，愈高愈具創意。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Max Tokens</strong></td>
+                                <td>1000</td>
+                                <td>單次模型生成回應的最大 Token 數量限制。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_04.png')">
+                <img src="OpenAI/02_eForm_04.png" alt="02 eForm 04">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 04</div>
+                <div class="desc-text">
+                    設定輸出對應，將 AI 產生的回應寫回至表單的指定欄位中。下圖表示<span class="highlight-red">紅色的一定要設定</span>。
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Prompt 核心要素</th>
+                                <th>配置說明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="highlight-red">System Prompt</span></td>
+                                <td>定義 AI 的角色背景與行為準則（例：你是一位專業的法務助理）。</td>
+                            </tr>
+                            <tr>
+                                <td><span class="highlight-red">User Prompt</span></td>
+                                <td>動態綁定表單輸入欄位，傳遞使用者實際要提問的內容。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_05.png')">
+                <img src="OpenAI/02_eForm_05.png" alt="02 eForm 05">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 05</div>
+                <div class="desc-text">請設定Form裡面的請求欄位。</div>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_06.png')">
+                <img src="OpenAI/02_eForm_06.png" alt="02 eForm 06">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 06</div>
+                <div class="desc-text">請選擇Map OpenAI Response To App Schema，並點右側的放大鏡。</div>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/02_eForm_07.png')">
+                <img src="OpenAI/02_eForm_07.png" alt="02 eForm 07">
+            </div>
+            <div class="description-box">
+                <div class="step-title">02 eForm 07</div>
+                <div class="desc-text">設定content至你的輸出欄位。</div>
+            </div>
+        </div>
+
+        <div class="step-container">
+            <div class="image-box" onclick="openModal('OpenAI/03_Result_01.png')">
+                <img src="OpenAI/03_Result_01.png" alt="03 預覽">
+            </div>
+            <div class="description-box">
+                <div class="step-title">03 預覽</div>
+                <div class="desc-text">預覽畫面，執行結果如圖。</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="modal" onclick="closeModal()">
+    <img id="modal-img" src="" alt="放大圖片预览">
+</div>
+
+<script>
+    function openModal(imgSrc) {
+        var modal = document.getElementById('modal');
+        var modalImg = document.getElementById('modal-img');
+        modal.style.display = 'flex';
+        modalImg.src = imgSrc;
+    }
+
+    function closeModal() {
+        var modal = document.getElementById('modal');
+        modal.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
